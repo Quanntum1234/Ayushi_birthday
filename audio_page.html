@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Page</title>
+</head>
+
+<body>
+  <h1>Audio Page</h1>
+
+  <audio controls>
+    <source id="audioSource" src="" type="audio/mp3">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <script>
+    // Get audio link from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const audioLink = decodeURIComponent(urlParams.get('audio'));
+
+    // Set audio source
+    const audioSource = document.getElementById('audioSource');
+    audioSource.src = audioLink;
+
+    // Autoplay audio
+    document.addEventListener('DOMContentLoaded', function () {
+      const audio = document.querySelector('audio');
+      audio.load();
+      audio.play();
+    });
+  </script>
+</body>
+
+</html>
