@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Try Again Page</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(to right, #dba379, #F5DDE0);
+    }
+
+    #tryAgainText {
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #tryAgainButton {
+      padding: 15px 30px;
+      font-size: 18px;
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #9b59b6;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+
+    #tryAgainButton:hover {
+      background-color: #8e44ad;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="tryAgainText">
+    <p>Didn't make it this time? No worries!</p>
+    <p>Better luck on the next try! 👍</p>
+  </div>
+  <button id="tryAgainButton" onclick="retryTicTacToe()">Try Again</button>
+
+  <script>
+    function retryTicTacToe() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to right, #3bff86, #f5faf2); /* Updated background color */
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 5px;
+      position: relative;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      font-size: 24px;
+      text-align: center;
+      vertical-align: middle;
+      border: 2px solid #000;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .result {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .continueButton,
+    .tryAgainButton {
+      padding: 15px 30px;
+      font-size: 18px;
+      text-decoration: none;
+      color: #ffffff;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+      border: none;
+      display: none;
+    }
+
+    .continueButton {
+      background: linear-gradient(to right, #4caf50, #388e3c); /* Continue button background */
+    }
+
+    .tryAgainButton {
+      background: linear-gradient(to right, #f44336, #d32f2f); /* Try Again button background */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="board" id="board">
+    <div class="cell" onclick="makeMove(0, 0)" id="cell00"></div>
+    <div class="cell" onclick="makeMove(0, 1)" id="cell01"></div>
+    <div class="cell" onclick="makeMove(0, 2)" id="cell02"></div>
+    <div class="cell" onclick="makeMove(1, 0)" id="cell10"></div>
+    <div class="cell" onclick="makeMove(1, 1)" id="cell11"></div>
+    <div class="cell" onclick="makeMove(1, 2)" id="cell12"></div>
+    <div class="cell" onclick="makeMove(2, 0)" id="cell20"></div>
+    <div class="cell" onclick="makeMove(2, 1)" id="cell21"></div>
+    <div class="cell" onclick="makeMove(2, 2)" id="cell22"></div>
+    <div class="result" id="result"></div>
+  </div>
+
+  <button class="continueButton" onclick="proceedToSecretPage()">Continue</button>
+  <button class="tryAgainButton" onclick="resetGame()">Try Again</button>
+
+  <script>
+    let userSymbol = 'X';
+    let computerSymbol = 'O';
+    let currentPlayer = userSymbol;
+    let board = [
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', '']
+    ];
+
+    function makeMove(row, col) {
+      if (board[row][col] === '' && !isGameOver()) {
+        board[row][col] = userSymbol;
+        document.getElementById(`cell${row}${col}`).innerText = userSymbol;
+        if (checkWinner(userSymbol)) {
+          document.getElementById('result').innerText = 'You win!';
+          document.querySelector('.continueButton').style.display = 'block';
+          document.querySelector('.tryAgainButton').style.display = 'none';
+        } else if (isBoardFull()) {
+          document.getElementById('result').innerText = 'It\'s a draw!';
+          document.querySelector('.continueButton').style.display = 'block';
+          document.querySelector('.tryAgainButton').style.display = 'none';
+        } else {
+          currentPlayer = computerSymbol;
+          computerMove();
+        }
+      }
+    }
+
+    function computerMove() {
+      let emptyCells = [];
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          if (board[i][j] === '') {
+            emptyCells.push({ row: i, col: j });
+          }
+        }
+      }
+
+      if (emptyCells.length > 0) {
+        let randomIndex = Math.floor(Math.random() * emptyCells.length);
+        let computerMove = emptyCells[randomIndex];
+        board[computerMove.row][computerMove.col] = computerSymbol;
+        document.getElementById(`cell${computerMove.row}${computerMove.col}`).innerText = computerSymbol;
+
+        if (checkWinner(computerSymbol)) {
+          document.getElementById('result').innerText = 'Computer wins!';
+          document.querySelector('.tryAgainButton').style.display = 'block';
+          document.querySelector('.continueButton').style.display = 'none';
+        } else if (isBoardFull()) {
+          document.getElementById('result').innerText = 'It\'s a draw!';
+          document.querySelector('.tryAgainButton').style.display = 'block';
+          document.querySelector('.continueButton').style.display = 'none';
+        } else {
+          currentPlayer = userSymbol;
+        }
+      }
+    }
+
+    function checkWinner(symbol) {
+      for (let i = 0; i < 3; i++) {
+        if (
+          (board[i][0] === symbol && board[i][1] === symbol && board[i][2] === symbol) ||
+          (board[0][i] === symbol && board[1][i] === symbol && board[2][i] === symbol)
+        ) {
+          return true;
+        }
+      }
+
+      if (
+        (board[0][0] === symbol && board[1][1] === symbol && board[2][2] === symbol) ||
+        (board[0][2] === symbol && board[1][1] === symbol && board[2][0] === symbol)
+      ) {
+        return true;
+      }
+
+      return false;
+    }
+
+    function isBoardFull() {
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          if (board[i][j] === '') {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    function isGameOver() {
+      return checkWinner(userSymbol) || checkWinner(computerSymbol) || isBoardFull();
+    }
+
+    function resetGame() {
+      board = [
+        ['', '', ''],
+        ['', '', ''],
+        ['','', '']
+      ];
+      currentPlayer = userSymbol;
+      document.getElementById('result').innerText = '';
+      document.querySelectorAll('.continueButton, .tryAgainButton').forEach(button => {
+        button.style.display = 'none';
+      });
+      updateBoardDisplay();
+    }
+
+    function proceedToSecretPage() {
+      window.location.href = "secret.html";
+    }
+
+    function updateBoardDisplay() {
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          document.getElementById(`cell${i}${j}`).innerText = board[i][j];
+        }
+      }
+    }
+  </script>
+
+</body>
+
+</html>

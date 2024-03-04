@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayushi's Birthday Celebration</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      background: linear-gradient(to right, #dba379, #F5DDE0);
+    }
+
+    #topImageContainer {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #topImage {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .square-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .square {
+      position: relative;
+      width: 150px;
+      height: 180px;
+      margin: 10px;
+      border-radius: 20px;
+      background: linear-gradient(to bottom right, #f8edfc, #e39a9a);
+      color: #4a4a4a;
+      cursor: pointer;
+      transition: transform 0.5s;
+    }
+
+    .circle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-button {
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .name {
+      position: absolute;
+      top: 76%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom right, #FFD700, #FFEC8B);
+      color: #4a4a4a;
+      display: none;
+      transform: rotateY(180deg);
+    }
+
+    .flipped {
+      transform: rotateY(180deg);
+    }
+
+    .birthdayNoteContainer {
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .birthdayNote {
+      color: #333;
+      font-size: 16px;
+      font-family: 'Lemon Milk', sans-serif;
+    }
+
+    .winButton {
+      padding: 15px 30px;
+      font-size: 18px;
+      text-decoration: none;
+      color: #ffffff;
+      background: linear-gradient(to right, #dba379, #F5DDE0);
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+      border: none;
+    }
+
+    .winButton:hover {
+      background: linear-gradient(to left, #dba379, #F5DDE0);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="topImageContainer">
+    <img id="topImage" src="https://i.imgur.com/FcRCD9W.jpeg" alt="Top Image">
+  </div>
+
+  <div class="birthdayNoteContainer">
+    <p class="birthdayNote">Happiest birthday to a girl who deserves all the happiness in the world... Happy birthday Ayushi. Ayushi♥️ having a friend like you who is there even in our worst conditions is a pleasure in its own!!</p>
+    <p class="birthdayNote">Below are the wishings from your friends' sides 🙃 (as you wanted but in a little different way)</p>
+  </div>
+
+  <!-- Add Squares 1-8<!-- Square 1 -->
+  <div class="square" onclick="openDriveLink('https://drive.google.com/file/d/12JC714BbZeDd7gEnEkWm5DRfZlZn9kgV/view?usp=drivesdk')">
+    <div class="circle" style="background-image: url('https://i.imgur.com/QnxqkMt.jpeg');">
+      <div class="play-button">&#9654;</div>
+    </div>
+    <div class="name">AGRIMA</div>
+    <div class="back"></div>
+  </div>
+
+  <!-- Square 2 -->
+  <div class="square" onclick="openDriveLink('https://drive.google.com/file/d/11tW13T0yTK38Z--SzHHtwt1QCmPrjVN6/view?usp=drivesdk')">
+    <div class="circle" style="background-image: url('https://i.imgur.com/VzMD5P3.jpeg');">
+      <div class="play-button">&#9654;</div>
+    </div>
+    <div class="name">ADRITA</div>
+    <div class="back"></div>
+  </div>
+
+  <!-- Square 3 -->
+  <div class="square" onclick="openDriveLink('https://drive.google.com/file/d/12DL8j6_dveFmrsN132PgtdKmp3AdjzlG/view?usp=drivesdk')">
+    <div class="circle" style="background-image: url('https://i.imgur.com/gytIV79.jpeg');">
+      <div class="play-button">&#9654;</div>
+    </div>
+    <div class="name">VINAYAK</div>
+    <div class="back"></div>
+  </div>
+
+  <!-- Square 4 -->
+  <div class="square" onclick="openDriveLink('https://drive.google.com/file/d/12DcN-jmxklNZzj_BLCg3eCp1vwuc-XxH/view?usp=drivesdk')">
+    <div class="circle" style="background-image: url('https://i.imgur.com/3lXvyoz.jpeg');">
+      <div class="play-button">&#9654;</div>
+    </div>
+    <div class="name">ABHISHEK</div>
+    <div class="back"></div>
+  </div>
+
+  <!-- Square 5 -->
+  <div class="square" onclick="openDriveLink('https://drive.google.com/file/d/11f9_b753yZgwM3b8O_-bBiUNnnZs_MvS/view?usp=drivesdk')">
+    <div class="circle" style="background-image: url('https://i.imgur.com/adsTeqI.jpeg');">
+      <div class="play-button">&#9654;</div>
+    </div>
+    <div class="name">ADARSH</div>
+    <div class="back"></div>
+  </div>
+
+  <!-- Square 6 -->
+  <div class="square" onclick="openDriveLink('https://drive.google.com/file/d/11ziQ2Z7noVCbRsFNaFDgrG03Q4z0oxJe/view?usp=drivesdk')">
+    <div class="circle" style="background-image: url('https://i.imgur.com/5N5OmmM.jpeg');">
+      <div class="play-button">&#9654;</div>
+    </div>
+    <div class="name">HARSH</div>
+    <div class="back"></div>
+  </div>
+
+  <!-- Square 7 -->
+  <div class="square" onclick="openDriveLink('https://drive.google.com/file/d/12JirOjUbsVPiQDayhRxrSZETCwbFht8O/view?usp=drivesdk')">
+    <div class="circle" style="background-image: url('https://i.imgur.com/AGn7V9I.jpeg');">
+      <div class="play-button">&#9654;</div>
+    </div>
+    <div class="name">ARADHYA</div>
+    <div class="back"></div>
+  </div>
+
+  <!-- Square 8 -->
+  <div class="square" onclick="openDriveLink('https://drive.google.com/file/d/121h-Yk0OvFtsaqi6DmxaEC3gsUgf0oTa/view?usp=drivesdk')">
+    <div class="circle" style="background-image: url('https://i.imgur.com/4S3NIh3.jpeg');">
+      <div class="play-button">&#9654;</div>
+    </div>
+    <div class="name">SYANDIMA</div>
+    <div class="back"></div>
+  </div>
+</div>
+
+<button class="winButton" onclick="proceedToGamePage()">Win the game to unlock the note</button>
+
+<script>
+  function openDriveLink(link) {
+    window.open(link, "_blank");
+  }
+
+  function proceedToGamePage() {
+    window.location.href = "game.html";
+  }
+</script>
+
+</body>
+
+</html>
